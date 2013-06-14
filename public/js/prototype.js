@@ -26,8 +26,8 @@ function addCube() {
         color: 0xff0000,
         wireframe: true
     });
-
-    mesh = new THREE.Mesh(geometry, material);
+    var mesh = new THREE.Mesh(geometry, material);
+    game.objects.push(mesh);
     game.scene.add(mesh);
 }
 
@@ -36,9 +36,10 @@ function animate() {
     // note: three.js includes requestAnimationFrame shim
     requestAnimationFrame(animate);
 
-    mesh.rotation.x += 0.01;
-    mesh.rotation.y += 0.02;
+    for(var mesh in game.objects) {
+        game.objects[mesh].rotation.x += 0.01 + mesh * .001;
+        game.objects[mesh].rotation.y += 0.02+ mesh * .001;
+    }
 
     game.renderer.render(game.scene, game.camera);
-
 }
