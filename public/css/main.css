@@ -18,3 +18,7 @@ body {
 }
 
 
+#threejs_stats {
+    position: absolute;
+    top: 0px;
+}
